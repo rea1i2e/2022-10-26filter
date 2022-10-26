@@ -1,18 +1,128 @@
-.search-box_label {
-	font-weight: bold;
-}
-.is-hide {
+@use 'global' as *;
+@use 'sass:math';
+
+/* ラジオボタンの装飾 */
+.radio_input {
 	display: none;
 }
 
-label {
+.radio_parts {
 	display: inline-block;
 	padding: 1em;
-	border: 3px solid red;
-	background-color: red;
+	position: relative;
+	margin-right: 20px;
 }
 
-.list {
-	padding: 1em;
-	background-color: pink;
+.radio_parts::before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	// width: 18px;
+	// height: 18px;
+	border: 1px solid #999;
+	// border-radius: 50%;
 }
+
+.radio_input:checked+.radio_parts::after {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(#0050c1, 0.2);
+}
+
+/* チェックボックスの装飾 */
+.checkbox_input {
+	display: none;
+}
+
+.checkbox_parts {
+	display: inline-block;
+	padding: 1em;
+	position: relative;
+	margin-right: 25px;
+}
+
+.checkbox_parts::before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	// width: 18px;
+	// height: 18px;
+	border: 1px solid #999;
+}
+
+.checkbox_input:checked+.checkbox_parts::after {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(#0050c1, 0.2);
+}
+
+/*他エリア*/
+// .wrapper {
+// 	width: 1000px;
+// 	margin: 30px auto;
+// }
+
+// h1{
+// 	text-align: center;
+// 	font-size: 1.7rem;
+// 	font-weight: 500;
+// 	margin-bottom: 30px;
+// 	color: #0050c1;
+// }
+
+// .search_area {
+// 	text-align: center;
+// }
+
+// .search_area div {
+// 	margin-bottom: 10px;
+// }
+
+// .item_container {
+// 	display: flex;
+// 	flex-wrap: wrap;
+// }
+
+// .item {
+// 	margin: 1.0rem;
+// 	padding: 1.0rem;
+// 	background: #efefef;
+// 	width: calc(80% / 3);
+// 	text-align: center;
+// }
+/*絞り込み条件外のアイテム*/
+.hide_item {
+	display: none;
+}
+
+.search_ui {
+	display: flex;
+	flex-direction: row-reverse;
+	justify-content: flex-end;
+}
+
+// .all_btn {
+// 	order: 1;
+// }
+
+// .sizeBox {
+// 	order: 2;
+// }

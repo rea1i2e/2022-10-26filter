@@ -29,45 +29,97 @@
 <body>
   <section class="l-section p-section">
     <div class="p-section__inner l-inner">
-      <br><br><br>
-
-      <h1 class="js-test">絞り込み検索</h1>
-      <form>
-        <h2 class="search-box_label">観光地域</h2>
-        <div class="search-box">
-          <label><input type="radio" name="area" value="north">北</label>
-          <label><input type="radio" name="area" value="center">中</label>
-          <label><input type="radio" name="area" value="south">南</label>
-        </div>
-        <br>
-
-        <h2 class="search-box_label">アクティビティで選ぶ</h2>
-        <div class="search-box">
-          <label class="js-all"><input type="checkbox" name="activity" value="">すべて</label>
-          <label><input type="checkbox" name="activity" value="golf">ゴルフ</label>
-          <label><input type="checkbox" name="activity" value="pool">プール</label>
-        </div>
-      </form>
       <br><br>
-
-      <ul class="list">
-        <li class="list_item" data-area="north" data-activity="pool">北プール</li>
-        <li class="list_item" data-area="north" data-activity="golf">北ゴルフ</li>
-        <li class="list_item" data-area="center" data-activity="pool">中プール</li>
-        <li class="list_item" data-area="center" data-activity="golf">中ゴルフ</li>
-        <li class="list_item" data-area="center" data-activity="all">中すべて</li>
-        <li class="list_item" data-area="south" data-activity="pool">南プール</li>
-      </ul>
-
-      <br><br><br>
-      <p>ソースコード<br>
-        <a href="https://github.com/rea1i2e/2022-10-26filter">https://github.com/rea1i2e/2022-10-26filter</a>
-      </p>
+      <h1>複数条件での絞り込み検索</h1>
       <br><br>
-      <p>参考<br>
-        <a href="https://www.tam-tam.co.jp/tipsnote/javascript/post14636.html">https://www.tam-tam.co.jp/tipsnote/javascript/post14636.html</a>
-      </p>
+      <!-- 絞込み検索UI start -->
+      <div class="search_area">
+        <form id="selectForm">
+          <h2>地域</h2>
+          <div class="search_ui size_search_box pc">
+            <span id="sizeBox">
+              <label>
+                <input type="checkbox" name="size" value="north" class="checkbox_input size_sort">
+                <span class="checkbox_parts">北部</span>
+              </label>
+              <label>
+                <input type="checkbox" name="size" value="center" class="checkbox_input size_sort">
+                <span class="checkbox_parts">中部</span>
+              </label>
+              <label>
+                <input type="checkbox" name="size" value="south" class="checkbox_input size_sort">
+                <span class="checkbox_parts">南部</span>
+              </label>
+              <label>
+                <input type="checkbox" name="size" value="remote" class="checkbox_input size_sort">
+                <span class="checkbox_parts">離島</span>
+              </label>
+            </span>
+            <!-- <label class="all_btn">
+              <input type="checkbox" id="checkAll" name="size_all" class="checkbox_input">
+              <span class="checkbox_parts">すべて</span>
+            </label> -->
+          </div>
+          <br>
 
+          <h2>絞り込み2</h2>
+          <div class="search_ui category_search_box">
+            <label class="checkbox_margin">
+              <input type="checkbox" name="category" value="golf" class="checkbox_input category_sort">
+              <span class="checkbox_parts padding_adjust1">ゴルフ</span>
+            </label>
+            <label class="checkbox_margin">
+              <input type="checkbox" name="category" value="pool" class="checkbox_input category_sort">
+              <span class="checkbox_parts padding_adjust1">プール</span>
+            </label>
+            <label class="checkbox_margin">
+              <input type="checkbox" name="category" value="marine" class="checkbox_input category_sort">
+              <span class="checkbox_parts padding_adjust1">海</span>
+            </label>
+            <label class="checkbox_margin">
+              <input type="checkbox" name="category" value="" class="checkbox_input" id="allItem">
+              <span class="checkbox_parts padding_adjust1">すべて</span>
+            </label>
+          </div>
+
+        </form>
+      </div>
+      <br>
+
+      <h2>絞り込み結果</h2>
+      <div class="item_container list">
+        <div class="item" data-category='["golf", "marine"]' data-size="north">
+          <p class="item_name">北部 ゴルフ 海</p>
+        </div>
+        <div class="item" data-category='["golf"]' data-size="center">
+          <p class="item_name">中部 ゴルフ</p>
+        </div>
+        <div class="item" data-category='["pool"]' data-size="center">
+          <p class="item_name">中部 プール</p>
+        </div>
+        <div class="item" data-category='["pool", "marine"]' data-size="center">
+          <p class="item_name">中部 プール 海</p>
+        </div>
+        <div class="item" data-category='["pool"]' data-size="south">
+          <p class="item_name">南部 プール</p>
+        </div>
+        <div class="item" data-category='["pool", "marine"]' data-size="south">
+          <p class="item_name">南部 プール 海</p>
+        </div>
+        <div class="item" data-category='["golf"]' data-size="remote">
+          <p class="item_name">離島 ゴルフ</p>
+        </div>
+        <div class="item" data-category='["pool", "marine"]' data-size="remote">
+          <p class="item_name">離島 プール 海</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <br><br><br>
+  <section class="l-section p-section">
+    <div class="p-section__inner l-inner">
+      <h2>参考</h2>
+      <p><a href="https://qiita.com/taroccoli/items/c0c23ccffdd58f869d1d">https://qiita.com/taroccoli/items/c0c23ccffdd58f869d1d</a></p>
     </div>
   </section>
 </body>

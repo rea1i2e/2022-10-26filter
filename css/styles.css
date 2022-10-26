@@ -159,23 +159,90 @@ img:not([alt]) {
   color: blue;
 }
 
-.search-box_label {
-  font-weight: bold;
-}
-
-.is-hide {
+/* ラジオボタンの装飾 */
+.radio_input {
   display: none;
 }
 
-label {
+.radio_parts {
   display: inline-block;
   padding: 1em;
-  border: 3px solid red;
-  background-color: red;
+  position: relative;
+  margin-right: 20px;
 }
 
-.list {
+.radio_parts::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 1px solid #999;
+}
+
+.radio_input:checked + .radio_parts::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 80, 193, .2);
+}
+
+/* チェックボックスの装飾 */
+.checkbox_input {
+  display: none;
+}
+
+.checkbox_parts {
+  display: inline-block;
   padding: 1em;
-  background-color: pink;
+  position: relative;
+  margin-right: 25px;
+}
+
+.checkbox_parts::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 1px solid #999;
+}
+
+.checkbox_input:checked + .checkbox_parts::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 80, 193, .2);
+}
+
+/*他エリア*/
+/*絞り込み条件外のアイテム*/
+.hide_item {
+  display: none;
+}
+
+.search_ui {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
 }
 /*# sourceMappingURL=styles.css.map */

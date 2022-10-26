@@ -1,60 +1,93 @@
-$(function () {
-  $(".js-all").on("click", function () {
-    $("input[name='activity']").not(".js-all input")
-      .removeAttr("checked")
-      .prop("checked", false)
-      .change();
-  });
-});
+let searchUi = ".search_ui"; // 絞り込み検索条件設定エリア
+let listItem = ".item"; // 検索対象アイテム
+let hideItem = "hide_item"; // 対象外アイテムに付与されるclass名
+let checkBox = 'input[name="size"]'; //チェックボックスのnameを指定
 
-var searchBox = ".search-box"; // 絞り込む項目を選択するエリア
-var listItem = ".list_item"; // 絞り込み対象のアイテム
-var hideClass = "is-hide"; // 絞り込み対象外の場合に付与されるclass名
-
-// search-box input がクリックされたらsearch_filter()を実行
+// 絞り込み条件の変更
 $(function () {
-  // 絞り込み項目を変更した時
-  $(document).on("change", searchBox + " input", function () {
+  $(document).on("change", searchUi + " input", function () {
     search_filter();
   });
 });
 
-/**
- * リストの絞り込みを行う
- */
 function search_filter() {
   // 非表示状態を解除
-  $(listItem).removeClass(hideClass);
-
-  for (var i = 0; i < $(searchBox).length; i++) {
-    var name = $(searchBox).eq(i).find("input").attr("name");
-    // 選択されている項目を取得
-    var searchData = get_selected_input_items(name);
-    // 選択されている項目がない、またはALLを選択している場合は飛ばす
+  $(listItem).removeClass(hideItem);
+  for (let i = 0; i < $(searchUi).length; i++) {
+    let name = $(searchUi).eq(i).find("input").attr("name");
+    // チェックされた検索条件を取得
+    let searchData = get_selected_input_items(name);
+    // チェック項目無し or 全てを選択している場合
     if (searchData.length === 0 || searchData[0] === "") {
       continue;
     }
     // リスト内の各アイテムをチェック
-    for (var j = 0; j < $(listItem).length; j++) {
+    for (let j = 0; j < $(listItem).length; j++) {
       // アイテムに設定している項目を取得
-      var itemData = $(listItem).eq(j).data(name);
+      let itemData = get_setting_values_in_item($(listItem).eq(j), name);
       // 絞り込み対象かどうかを調べる
-      if (searchData.indexOf(itemData) === -1) {
-        $(listItem).eq(j).addClass(hideClass);
+      let check = array_match_check(itemData, searchData);
+      if (!check) {
+        $(listItem).eq(j).addClass(hideItem);
       }
     }
   }
 }
 
-/**
- * inputで選択されている値の一覧を取得する
- * @param  {String} name 対象にするinputのname属性の値
- * @return {Array}       選択されているinputのvalue属性の値
- */
+// チェックの入った値の一覧を取得する
 function get_selected_input_items(name) {
-  var searchData = [];
+  let searchData = [];
   $("[name=" + name + "]:checked").each(function () {
     searchData.push($(this).val());
   });
   return searchData;
 }
+
+// リスト内のアイテムに設定している値の一覧を取得する
+function get_setting_values_in_item(target, data) {
+  let itemData = target.data(data);
+  if (!Array.isArray(itemData)) {
+    itemData = [itemData];
+  }
+  return itemData;
+}
+
+// 2つの配列内で一致する文字列があるかどうかを調べる
+function array_match_check(arr1, arr2) {
+  // 絞り込み対象かどうかを調べる
+  let arrCheck = false;
+  for (let i = 0; i < arr1.length; i++) {
+    if (arr2.indexOf(arr1[i]) >= 0) {
+      arrCheck = true;
+      break;
+    }
+  }
+  return arrCheck;
+}
+
+// 全サイズ選択解除
+$(function () {
+  $("#checkAll").on("click", function () {
+    $(".size_sort").prop("checked", this.checked);
+  });
+  $(".size_sort").on("click", function () {
+    if ($("#sizeBox :checked").length == $("#sizeBox :input").length) {
+      $("#checkAll").prop("checked", "checked");
+    } else {
+      $("#checkAll").prop("checked", false);
+    }
+  });
+});
+
+$(function () {
+  $("#allItem").on("click", function () {
+    $(".category_sort").prop("checked", this.checked);
+  });
+  $(".category_sort").on("click", function () {
+    if ($("#sizeBox :checked").length == $("#sizeBox :input").length) {
+      $("#allItem").prop("checked", "checked");
+    } else {
+      $("#allItem").prop("checked", false);
+    }
+  });
+});
