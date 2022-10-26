@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <meta name="format-detection" content="telephone=no" />
+  <!-- meta情報 -->
+  <title>CodeUps</title>
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
+  <!-- ogp -->
+  <meta property="og:title" content="" />
+  <meta property="og:type" content="" />
+  <meta property="og:url" content="" />
+  <meta property="og:image" content="" />
+  <meta property="og:site_name" content="" />
+  <meta property="og:description" content="" />
+  <!-- ファビコン -->
+  <link rel="”icon”" href="" />
+  <!-- css -->
+  <link rel="stylesheet" href="./css/styles.css">
+  <!-- JavaScript -->
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script defer src="./js/script.js"></script>
+  <script defer src="./js/search.js"></script>
+</head>
+
+<body>
+  <h1 class="js-test">絞り込み検索</h1>
+  <section class="l-section p-section">
+    <div class="p-section__inner l-inner">
+      <form>
+        <div class="search-box">
+          <span class="search-box_label">観光地域</span>
+          <!-- <label><input type="radio" name="area" value="">ALL</label> -->
+          <label><input type="checkbox" name="area" value="north">北</label>
+          <label><input type="checkbox" name="area" value="center">中</label>
+          <label><input type="checkbox" name="area" value="south">南</label>
+          <label><input type="checkbox" name="area" value="remote">離島</label>
+        </div>
+      
+        <div class="search-box">
+          <span class="search-box_label">アクティビティで選ぶ</span>
+          <label><input type="checkbox" name="activity" value="">すべて</label>
+          <label><input type="checkbox" name="activity" value="golf">ゴルフ</label>
+          <label><input type="checkbox" name="activity" value="pool">プール・ビーチ</label>
+        </div>
+      </form>
+      
+      <ul class="list">
+        <li class="list_item" data-area="north" data-activity="pool">ノースビーチ</li>
+        <li class="list_item" data-area="north" data-activity="golf">ノースゴルフ</li>
+        <li class="list_item" data-area="north" data-activity="pool">ノースビーチ</li>
+        <li class="list_item" data-area="center" data-activity="pool">センタービーチ</li>
+        <li class="list_item" data-area="east" data-activity="all">センターアミューズメント</li>
+        <li class="list_item" data-area="south" data-activity="pool">サウスプール</li>
+        <li class="list_item" data-area="remote" data-activity="all">離島リゾート</li>
+        <li class="list_item" data-area="remote" data-activity="golf">離島ゴルフ</li>
+      </ul>
+
+    </div>
+  </section>
+</body>
+
+</html>
