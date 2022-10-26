@@ -6,5 +6,13 @@
 }
 
 label {
-  background-color: yellow;
+	display: inline-block;
+	padding: 1em;
+	border: 3px solid red;
+	background-color: red;
+}
+
+.list {
+	padding: 1em;
+	background-color: pink;
 }

@@ -27,42 +27,48 @@
 </head>
 
 <body>
-  <h1 class="js-test">絞り込み検索</h1>
   <section class="l-section p-section">
     <div class="p-section__inner l-inner">
+      <br><br><br>
+
+      <h1 class="js-test">絞り込み検索</h1>
       <form>
+        <h2 class="search-box_label">観光地域</h2>
         <div class="search-box">
-          <span class="search-box_label">観光地域</span>
-          <!-- <label><input type="radio" name="area" value="">ALL</label> -->
           <label><input type="radio" name="area" value="north">北</label>
           <label><input type="radio" name="area" value="center">中</label>
           <label><input type="radio" name="area" value="south">南</label>
-          <label><input type="radio" name="area" value="remote">離島</label>
         </div>
-      
+        <br>
+
+        <h2 class="search-box_label">アクティビティで選ぶ</h2>
         <div class="search-box">
-          <span class="search-box_label">アクティビティで選ぶ</span>
-          <label><input type="radio" name="activity" value="">すべて</label>
-          <label><input type="radio" name="activity" value="golf">ゴルフ</label>
-          <label><input type="radio" name="activity" value="pool">プール・ビーチ</label>
+          <label class="js-all"><input type="checkbox" name="activity" value="">すべて</label>
+          <label><input type="checkbox" name="activity" value="golf">ゴルフ</label>
+          <label><input type="checkbox" name="activity" value="pool">プール</label>
         </div>
       </form>
-      
+      <br><br>
+
       <ul class="list">
-        <li class="list_item" data-area="north" data-activity="pool">ノースビーチ</li>
-        <li class="list_item" data-area="north" data-activity="golf">ノースゴルフ</li>
-        <li class="list_item" data-area="north" data-activity="pool">ノースビーチ</li>
-        <li class="list_item" data-area="center" data-activity="pool">センタービーチ</li>
-        <li class="list_item" data-area="east" data-activity="all">センターアミューズメント</li>
-        <li class="list_item" data-area="south" data-activity="pool">サウスプール</li>
-        <li class="list_item" data-area="remote" data-activity="all">離島リゾート</li>
-        <li class="list_item" data-area="remote" data-activity="golf">離島ゴルフ</li>
+        <li class="list_item" data-area="north" data-activity="pool">北プール</li>
+        <li class="list_item" data-area="north" data-activity="golf">北ゴルフ</li>
+        <li class="list_item" data-area="center" data-activity="pool">中プール</li>
+        <li class="list_item" data-area="center" data-activity="golf">中ゴルフ</li>
+        <li class="list_item" data-area="center" data-activity="all">中すべて</li>
+        <li class="list_item" data-area="south" data-activity="pool">南プール</li>
       </ul>
 
+      <br><br><br>
+      <p>ソースコード<br>
+        <a href="https://github.com/rea1i2e/2022-10-26filter">https://github.com/rea1i2e/2022-10-26filter</a>
+      </p>
+      <br><br>
+      <p>参考<br>
+        <a href="https://www.tam-tam.co.jp/tipsnote/javascript/post14636.html">https://www.tam-tam.co.jp/tipsnote/javascript/post14636.html</a>
+      </p>
+
     </div>
-    <p>ソースコード<br>
-    <a href="https://github.com/rea1i2e/2022-10-26filter">https://github.com/rea1i2e/2022-10-26filter</a>
-    </p>
   </section>
 </body>
 
